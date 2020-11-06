@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ab690a2-2dd2-4e01-b75b-b71181b4e9b5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/clean-performers.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/clean-performers.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/build/build_company_sqlite.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/build/build_company_sqlite.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,11 +39,12 @@
   <component name="ProjectId" id="1jrWv2BfzyHslUnYecPCas3ZuhJ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/database/build" />
+    <property name="last_opened_file_path" value="U:/WP 765 Energy RIC/Database/clean-performers" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\letousi\Projects\clean-performers\database" />
       <recent name="C:\Users\letousi\Projects\clean-performers\database\build" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -120,8 +124,28 @@
       <option name="project" value="LOCAL" />
       <updated>1604575310567</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Define configuration parser. Get company data from csv into a dictionary structure">
+      <created>1604577765185</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1604577765185</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
