@@ -1,5 +1,5 @@
 """
-This program builds the company SQLite database from Pitchbook's csv file.
+This program builds the PB_Company table from a reference Pitchbook's csv file.
 """
 
 from pathlib import Path

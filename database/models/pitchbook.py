@@ -13,7 +13,7 @@ Base = declarative_base()
 
 # TODO: enrich with country_ref data
 class PbCompany(Base):
-    __tablename__ = "PbCompany"
+    __tablename__ = "PB_Company"
 
     pb_id = Column(String, primary_key=True)
     exchange = Column(String)

@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ab690a2-2dd2-4e01-b75b-b71181b4e9b5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/database/build/build_REF_Country.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/models/ref_country.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/scripts/read.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/build/build_company_sqlite.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/build/build_PbCompany.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/build/build_PbCompany.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/build/build_PB_Company.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/models/pitchbook.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/models/pitchbook.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/scripts/cleaning.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/scripts/clean.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/scripts/writing.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/scripts/write.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,16 +41,17 @@
   <component name="ProjectId" id="1jrWv2BfzyHslUnYecPCas3ZuhJ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="U:/WP 765 Energy RIC/Database/clean-performers-db" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/database/build" />
     <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\letousi\Projects\clean-performers\database" />
-      <recent name="C:\Users\letousi\Projects\clean-performers\database\build" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\letousi\Projects\clean-performers" />
+      <recent name="C:\Users\letousi\Projects\clean-performers\database" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\letousi\Projects\clean-performers\database\build" />
+      <recent name="C:\Users\letousi\Projects\clean-performers\database\models" />
       <recent name="C:\Users\letousi\Projects\clean-performers\database" />
     </key>
   </component>
@@ -66,7 +67,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.build_REF_Country">
     <configuration name="build_PbCompany" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="clean-performers" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -79,7 +80,28 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/database/build/build_PbCompany.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\letousi\Projects\clean-performers\database\build\build_PB_Company.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="build_REF_Country" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="clean-performers" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/database/build" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/database/build/build_REF_Country.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -90,6 +112,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.build_REF_Country" />
         <item itemvalue="Python.build_PbCompany" />
       </list>
     </recent_temporary>
@@ -140,7 +163,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604666453113</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Implement PbCompany class attributes names. Update class constructor with format scripts. Update save to csv to query format.">
+      <created>1604742745711</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1604742745711</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
