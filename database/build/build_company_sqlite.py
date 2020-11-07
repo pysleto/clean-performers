@@ -2,19 +2,18 @@
 This program builds the company SQLite database from Pitchbook's csv file.
 """
 
-import os
-import csv
-import json
+from pathlib import Path
+import configparser as cfp
 from importlib import resources
 
-from pathlib import Path
-
-import configparser as cfp
+import csv
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from datetime import datetime
+import pandas as pd
+
+from database.scripts.writing import save_query_to_csv
 
 from database.models.pitchbook import Base
 from database.models.pitchbook import PbCompany
@@ -35,29 +34,33 @@ def get_company_data(file_path):
         return data
 
 
-def populate_database(session, company_data):
+def populate_database(session, table, data):
+    """
+    This function checks data already in table and adds new observations to table
+    """
     # insert the data
-    for row in company_data:
+    for row in data:
 
         company = (
-            session.query(PbCompany)
-            .filter(PbCompany.pb_id == row["pb_id"])
+            session.query(table)
+            .filter(table.pb_id == row["pb_id"])
             .one_or_none()
         )
         if company is None:
-            company = PbCompany(
+            company = table(
                 pb_id=row["pb_id"],
-                company_exchange=row["company_exchange"],
-                company_ticker=row["company_ticker"],
-                company_name=row["company_name"],
-                company_legal_name=row["company_legal_name"],
-                company_former_name=row["company_former_name"],
-                company_aka_name=row["company_aka_name"],
-                company_HQ_country_2DID_iso=row["company_HQ_country_2DID_iso"],
-                company_website=row["company_website"],
-                extract_date=datetime.strptime(row["extract_date"], '%m/%d/%Y').date(),
+                exchange=row["company_exchange"],
+                ticker=row["company_ticker"],
+                name=row["company_name"],
+                name_legal=row["company_legal_name"],
+                name_former=row["company_former_name"],
+                name_aka=row["company_aka_name"],
+                hq_country_2did_iso=row["company_HQ_country_2DID_iso"],
+                website=row["company_website"],
+                extract_date=row["extract_date"],
                 extract_source=row["extract_source"]
             )
+
             session.add(company)
 
         session.commit()
@@ -88,7 +91,22 @@ def main():
     Session.configure(bind=engine)
     session = Session()
 
-    populate_database(session, company_data)
+    populate_database(session, PbCompany, company_data)
+
+    # Save an extract of the company table to a csv file
+    company_check = session.query(
+        PbCompany.pb_id, PbCompany.exchange, PbCompany.ticker, PbCompany.name, PbCompany.name_clean,
+        PbCompany.name_legal, PbCompany.name_former, PbCompany.name_aka, PbCompany.hq_country_2did_iso,
+        PbCompany.website, PbCompany.extract_date, PbCompany.extract_source
+    ).all()
+
+    fieldnames = ['pb_id', 'exchange', 'ticker', 'name', 'name_clean', 'name_legal', 'name_former',
+                  'name_aka', 'hq_country_2did_iso', 'website', 'extract_date', 'extract_source']
+
+    save_query_to_csv(Path(cfg['path']['project']).joinpath('check.csv'),
+                      company_check,
+                      fieldnames
+                      )
 
     print("Finished")
 

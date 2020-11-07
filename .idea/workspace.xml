@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1ab690a2-2dd2-4e01-b75b-b71181b4e9b5" name="Default Changelist" comment="">
+    <list default="true" id="1ab690a2-2dd2-4e01-b75b-b71181b4e9b5" name="Default Changelist" comment="Implement PbCompany class attributes names. Update class constructor with format scripts. Update save to csv to query format.">
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/scripts/cleaning.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/scripts/writing.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/clean-performers.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/clean-performers.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/config.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/build/build_company_sqlite.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/build/build_company_sqlite.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/models/pitchbook.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/models/pitchbook.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,8 +43,8 @@
   <component name="ProjectId" id="1jrWv2BfzyHslUnYecPCas3ZuhJ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="U:/WP 765 Energy RIC/Database/clean-performers" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
+    <property name="last_opened_file_path" value="U:/WP 765 Energy RIC/Database/clean-performers-db" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -131,7 +135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604577765185</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Create Pitchbook Company class. Connect with SQLite database. Populate from input csv file.">
+      <created>1604666453113</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1604666453113</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -150,6 +161,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
     <MESSAGE value="Define configuration parser. Get company data from csv into a dictionary structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="Define configuration parser. Get company data from csv into a dictionary structure" />
+    <MESSAGE value="Create Pitchbook Company class. Connect with SQLite database. Populate from input csv file." />
+    <MESSAGE value="Implement PbCompany class attributes names. Update class constructor with format scripts. Update save to csv to query format." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement PbCompany class attributes names. Update class constructor with format scripts. Update save to csv to query format." />
   </component>
 </project>
