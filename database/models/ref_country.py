@@ -1,26 +1,28 @@
 from sqlalchemy import Column, Integer, String, Date, ForeignKey, Table, Boolean
 from sqlalchemy.orm import relationship, backref
-from sqlalchemy.ext.declarative import declarative_base
 
-Base = declarative_base()
+from database.models import Base
+from database.models.pitchbook import PbCompany
 
 
 class RefCountry(Base):
     __tablename__ = "REF_Country"
 
-    country_2did_iso = Column(String, primary_key=True)
-    country_name_iso = Column(String)
-    country_name_simple = Column(String)
-    country_2did_soeur = Column(String)
-    country_3did_iso = Column(String)
-    country_flag = Column(String)
-    jrc_region = Column(String)
-    iea_region = Column(String)
+    country_2did_iso = Column(String(50), primary_key=True)
+    country_name_iso = Column(String(50), nullable=False)
+    country_name_simple = Column(String(50), nullable=False)
+    country_2did_soeur = Column(String(50))
+    country_3did_iso = Column(String(50))
+    country_flag = Column(String(255))
+    jrc_region = Column(String(50), nullable=False)
+    iea_region = Column(String(50))
     is_oecd = Column(Boolean)
     is_iea = Column(Boolean)
     is_mi = Column(Boolean)
-    is_eu27 = Column(Boolean)
+    is_eu27 = Column(Boolean, nullable=False)
     is_tax_haven = Column(Boolean)
+
+    company = relationship('PbCompany', back_populates='country')
 
     def __repr__(self):
         return "<Country ('%s', '%s')>" % (self.country_2did_iso, self.country_name_simple)

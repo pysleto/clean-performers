@@ -2,7 +2,7 @@ import re
 import unicodedata
 
 
-def fill_up(value, alternative):
+def fill_col(value, alternative):
     """
     This function replaces an unavailable value by an alternative
     """
@@ -11,6 +11,17 @@ def fill_up(value, alternative):
         value = alternative
 
     return value
+
+
+def fill_http(website):
+    """
+    This function adds a prefix to a website name
+    """
+
+    if website != '':
+        website = 'https://' + website
+
+    return website
 
 
 def clean_name(name):

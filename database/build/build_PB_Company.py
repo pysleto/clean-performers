@@ -3,25 +3,19 @@ This program builds the PB_Company table from a reference Pitchbook's csv file.
 """
 
 from pathlib import Path
-import configparser as cfp
-from importlib import resources
 
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+from config import cfg
+
+from database.build import session
 
 from database.scripts.read import get_data_from_csv
 from database.scripts.write import save_query_to_csv
 
-from database.models.pitchbook import Base
 from database.models.pitchbook import PbCompany
-
-cfg = cfp.ConfigParser(interpolation=cfp.ExtendedInterpolation())
-
-with resources.path('config', 'config.ini') as path:
-    cfg.read(path)
+from database.models.ref_country import RefCountry
 
 
-def populate_database(session, table, data):
+def populate_database(current_session, table, data):
     """
     This function checks data already in table and adds new observations to table
     """
@@ -29,7 +23,7 @@ def populate_database(session, table, data):
     for row in data:
 
         company = (
-            session.query(table)
+            current_session.query(table)
             .filter(table.pb_id == row["pb_id"])
             .one_or_none()
         )
@@ -42,17 +36,17 @@ def populate_database(session, table, data):
                 name_legal=row["company_legal_name"],
                 name_former=row["company_former_name"],
                 name_aka=row["company_aka_name"],
-                hq_country_2did_iso=row["company_HQ_country_2DID_iso"],
+                country_2did_iso=row["company_HQ_country_2DID_iso"],
                 website=row["company_website"],
-                extract_date=row["extract_date"],
-                extract_source=row["extract_source"]
+                extracted_on=row["extract_date"],
+                extracted_from=row["extract_source"]
             )
 
-            session.add(company)
+            current_session.add(company)
 
-        session.commit()
+        current_session.commit()
 
-    session.close()
+    current_session.close()
 
 
 def main():
@@ -63,26 +57,22 @@ def main():
         data = get_data_from_csv(csv_file_path)
         company_data = data
 
-    # Connect to the database using SQLAlchemy
-    with Path(cfg['path']['sqlite_file']) as sqlite_file_path:
-        engine = create_engine(f"sqlite:///{sqlite_file_path}", echo=True)
-
-    Base.metadata.create_all(engine)
-    Session = sessionmaker()
-    Session.configure(bind=engine)
-    session = Session()
-
     populate_database(session, PbCompany, company_data)
 
     # Save an extract of the company table to a csv file
     company_check = session.query(
         PbCompany.pb_id, PbCompany.exchange, PbCompany.ticker, PbCompany.name, PbCompany.name_clean,
-        PbCompany.name_legal, PbCompany.name_former, PbCompany.name_aka, PbCompany.hq_country_2did_iso,
-        PbCompany.website, PbCompany.extract_date, PbCompany.extract_source
-    ).all()
+        PbCompany.name_legal, PbCompany.name_former, PbCompany.name_aka,
+        PbCompany.country_2did_iso, RefCountry.country_name_simple, RefCountry.jrc_region,
+        PbCompany.website, PbCompany.extracted_on, PbCompany.extracted_from
+    )
+    company_check = company_check.join(RefCountry).all()
 
     fieldnames = ['pb_id', 'exchange', 'ticker', 'name', 'name_clean', 'name_legal', 'name_former',
-                  'name_aka', 'hq_country_2did_iso', 'website', 'extract_date', 'extract_source']
+                  'name_aka',
+                  'country_2did_iso', 'country_name_simple', 'jrc_region',
+                  'website', 'extracted_on',
+                  'extracted_from']
 
     save_query_to_csv(Path(cfg['path']['dbb']).joinpath('PB_Company.csv'),
                       company_check,

@@ -3,25 +3,18 @@ This program builds the country table from a reference csv file.
 """
 
 from pathlib import Path
-import configparser as cfp
-from importlib import resources
 
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+from config import cfg
+
+from database.build import session
 
 from database.scripts.read import get_data_from_csv
 from database.scripts.write import save_query_to_csv
 
-from database.models.ref_country import Base
 from database.models.ref_country import RefCountry
 
-cfg = cfp.ConfigParser(interpolation=cfp.ExtendedInterpolation())
 
-with resources.path('config', 'config.ini') as path:
-    cfg.read(path)
-
-
-def populate_database(session, table, data):
+def populate_database(current_session, table, data):
     """
     This function checks data already in table and adds new observations to table
     """
@@ -29,7 +22,7 @@ def populate_database(session, table, data):
     for row in data:
 
         country = (
-            session.query(table)
+            current_session.query(table)
             .filter(table.country_2did_iso == row["country_2did_iso"])
             .one_or_none()
         )
@@ -50,29 +43,21 @@ def populate_database(session, table, data):
                 is_tax_haven=row['is_tax_haven']
             )
 
-            session.add(country)
+            current_session.add(country)
 
-        session.commit()
+        current_session.commit()
 
-    session.close()
+    current_session.close()
 
 
 def main():
     print("Starting")
 
+    # TODO: Upload a new field: Pitchbook country
     # get the company data into a dictionary structure
     with Path(cfg['ref']['country_csv_file']) as csv_file_path:
         data = get_data_from_csv(csv_file_path)
         country_data = data
-
-    # Connect to the database using SQLAlchemy
-    with Path(cfg['path']['sqlite_file']) as sqlite_file_path:
-        engine = create_engine(f"sqlite:///{sqlite_file_path}", echo=True)
-
-    Base.metadata.create_all(engine)
-    Session = sessionmaker()
-    Session.configure(bind=engine)
-    session = Session()
 
     populate_database(session, RefCountry, country_data)
 
@@ -82,7 +67,7 @@ def main():
         RefCountry.country_2did_soeur, RefCountry.country_3did_iso, RefCountry.country_flag, RefCountry.jrc_region,
         RefCountry.iea_region, RefCountry.is_oecd, RefCountry.is_iea, RefCountry.is_mi, RefCountry.is_eu27,
         RefCountry.is_tax_haven
-    ).all()
+    ).order_by(RefCountry.country_2did_iso).all()
 
     fieldnames = ['country_2did_iso', 'country_name_iso', 'country_name_simple', 'country_2did_soeur',
                   'country_3did_iso', 'country_flag', 'jrc_region', 'iea_region', 'is_oecd', 'is_iea', 'is_mi',

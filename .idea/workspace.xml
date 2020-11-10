@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1ab690a2-2dd2-4e01-b75b-b71181b4e9b5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/database/build/build_REF_Country.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/models/ref_country.py" afterDir="false" />
+    <list default="true" id="1ab690a2-2dd2-4e01-b75b-b71181b4e9b5" name="Default Changelist" comment="Define ref_country class and script to build and populate the database table.">
+      <change afterPath="$PROJECT_DIR$/database/build/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/models/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/build/build_PbCompany.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/build/build_PB_Company.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/build/build_PB_Company.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/build/build_PB_Company.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/build/build_REF_Country.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/build/build_REF_Country.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/models/pitchbook.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/models/pitchbook.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/models/ref_country.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/models/ref_country.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/scripts/clean.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/scripts/clean.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -67,8 +70,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.build_REF_Country">
-    <configuration name="build_PbCompany" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.build_PB_Company">
+    <configuration name="build_PB_Company" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="clean-performers" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -80,7 +83,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\letousi\Projects\clean-performers\database\build\build_PB_Company.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/database/build/build_PB_Company.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -110,10 +113,14 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.build_PB_Company" />
+      <item itemvalue="Python.build_REF_Country" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.build_PB_Company" />
         <item itemvalue="Python.build_REF_Country" />
-        <item itemvalue="Python.build_PbCompany" />
       </list>
     </recent_temporary>
   </component>
@@ -170,7 +177,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604742745711</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Define ref_country class and script to build and populate the database table.">
+      <created>1604746663762</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1604746663762</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -191,6 +205,7 @@
     <MESSAGE value="Define configuration parser. Get company data from csv into a dictionary structure" />
     <MESSAGE value="Create Pitchbook Company class. Connect with SQLite database. Populate from input csv file." />
     <MESSAGE value="Implement PbCompany class attributes names. Update class constructor with format scripts. Update save to csv to query format." />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement PbCompany class attributes names. Update class constructor with format scripts. Update save to csv to query format." />
+    <MESSAGE value="Define ref_country class and script to build and populate the database table." />
+    <option name="LAST_COMMIT_MESSAGE" value="Define ref_country class and script to build and populate the database table." />
   </component>
 </project>
