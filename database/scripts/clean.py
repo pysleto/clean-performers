@@ -13,17 +13,6 @@ def fill_col(value, alternative):
     return value
 
 
-def fill_http(website):
-    """
-    This function adds a prefix to a website name
-    """
-
-    if website != '':
-        website = 'https://' + website
-
-    return website
-
-
 def clean_name(name):
     """
     This function standardizes the format of a company_name in order to enable matching

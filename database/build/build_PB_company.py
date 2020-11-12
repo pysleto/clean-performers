@@ -12,7 +12,7 @@ from database.scripts.read import get_data_from_csv
 from database.scripts.write import save_query_to_csv
 
 from database.models.pitchbook import PbCompany
-from database.models.ref_country import RefCountry
+from database.models.country import RefCountry
 
 
 def populate_database(current_session, table, data):
@@ -31,7 +31,7 @@ def populate_database(current_session, table, data):
             company = table(
                 pb_id=row["pb_id"],
                 exchange=row["company_exchange"],
-                ticker=row["company_ticker"],
+                ticker_id=row["company_ticker"],
                 name=row["company_name"],
                 name_legal=row["company_legal_name"],
                 name_former=row["company_former_name"],
@@ -61,14 +61,14 @@ def main():
 
     # Save an extract of the company table to a csv file
     company_check = session.query(
-        PbCompany.pb_id, PbCompany.exchange, PbCompany.ticker, PbCompany.name, PbCompany.name_clean,
+        PbCompany.pb_id, PbCompany.exchange, PbCompany.ticker_id, PbCompany.name, PbCompany.name_clean,
         PbCompany.name_legal, PbCompany.name_former, PbCompany.name_aka,
         PbCompany.country_2did_iso, RefCountry.country_name_simple, RefCountry.jrc_region,
         PbCompany.website, PbCompany.extracted_on, PbCompany.extracted_from
     )
     company_check = company_check.join(RefCountry).all()
 
-    fieldnames = ['pb_id', 'exchange', 'ticker', 'name', 'name_clean', 'name_legal', 'name_former',
+    fieldnames = ['pb_id', 'exchange', 'ticker_id', 'name', 'name_clean', 'name_legal', 'name_former',
                   'name_aka',
                   'country_2did_iso', 'country_name_simple', 'jrc_region',
                   'website', 'extracted_on',
