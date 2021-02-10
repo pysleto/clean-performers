@@ -5,7 +5,7 @@ from sqlalchemy.orm import relationship, backref
 
 from database.models import Base
 
-from database.scripts.clean import clean_name, fill_col
+from database.scripts.standardize import clean_name, fill_col
 
 
 class PbCompany(Base):
